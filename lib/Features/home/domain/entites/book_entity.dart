@@ -1,11 +1,26 @@
-// only data needed to build UI no from json or samething like models
+import 'package:hive/hive.dart';
+
+part 'book_entity.g.dart';
+
+@HiveType(typeId: 0)
 class BookEntity {
+  @HiveField(0)
   final String? bookId;
+
+  @HiveField(1)
   final String? imageUrl;
+
+  @HiveField(2)
   final String title;
+
+  @HiveField(3)
   final String? author;
-  final num rating;
-  final num price;
+
+  @HiveField(4)
+  final num? rating;
+
+  @HiveField(5)
+  final num? price;
 
   BookEntity({
     required this.bookId,
