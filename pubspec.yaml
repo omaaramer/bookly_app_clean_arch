@@ -37,6 +37,7 @@ dependencies:
 
 dev_dependencies:
   dartz: ^0.10.1
+  dio: ^5.5.0+1
   equatable: ^2.0.5
   flutter_lints: ^4.0.0
   flutter_test:
