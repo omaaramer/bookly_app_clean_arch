@@ -1,12 +1,14 @@
 // only data needed to build UI no from json or samething like models
 class BookEntity {
-  final String imageUrl;
+  final String? bookId;
+  final String? imageUrl;
   final String title;
-  final String author;
+  final String? author;
   final num rating;
   final num price;
 
-  const BookEntity({
+  BookEntity({
+    required this.bookId,
     required this.imageUrl,
     required this.title,
     required this.author,
