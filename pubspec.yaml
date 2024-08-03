@@ -36,8 +36,8 @@ dependencies:
   google_fonts: ^6.2.1
 
 dev_dependencies:
-  # usful for error handling, it provide eather calss that enable to return either value or exception 
   dartz: ^0.10.1
+  equatable: ^2.0.5
   flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
