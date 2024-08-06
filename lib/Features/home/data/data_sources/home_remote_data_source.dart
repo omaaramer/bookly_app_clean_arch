@@ -7,7 +7,7 @@ import 'package:hive/hive.dart';
 import '../models/book_model/book_model.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<List<BookEntity>> featchFeaturedBooks();
+  Future<List<BookEntity>> featchFeaturedBooks({int pageNum = 0});
   Future<List<BookEntity>> featchNewsetBooks();
 }
 
@@ -15,12 +15,12 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   ApiService apiService;
   HomeRemoteDataSourceImpl({required this.apiService});
   @override
-  Future<List<BookEntity>> featchFeaturedBooks() async {
-    var response =
-        await apiService.get('volumes?Filtering=free-ebooks&q=programming');
+  Future<List<BookEntity>> featchFeaturedBooks({int pageNum = 0}) async {
+    var response = await apiService.get(
+        'volumes?Filtering=free-ebooks&q=programming&startIndex=${pageNum * 10}');
     List<BookEntity> books = getBooksList(response);
 
-    await saveBooksOnHive(books, kFeaturedBook);
+    saveBooksOnHive(books, kFeaturedBook);
     return books;
   }
 

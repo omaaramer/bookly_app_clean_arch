@@ -41,11 +41,14 @@ class ServerFailure extends Failure {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       return ServerFailure(message: response['error']['message']);
     } else if (statusCode == 404) {
-      return ServerFailure(message: 'Your request not found, please try again');
+      return ServerFailure(
+          message: 'Your request not found, please try again error 404');
     } else if (statusCode == 500) {
-      return ServerFailure(message: 'Internal server error, please try again');
+      return ServerFailure(
+          message: 'Internal server error, please try again error 500');
     } else {
-      return ServerFailure(message: "Something went wrong, please try again");
+      return ServerFailure(
+          message: "Something went wrong server failure, please try again");
     }
   }
 }

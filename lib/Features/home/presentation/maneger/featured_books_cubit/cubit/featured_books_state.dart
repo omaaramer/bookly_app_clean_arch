@@ -11,6 +11,13 @@ final class FeaturedBooksInitial extends FeaturedBooksState {}
 
 final class FeaturedBooksLoadingState extends FeaturedBooksState {}
 
+final class FeaturedBooksPaginationLoadingState extends FeaturedBooksState {}
+
+final class FeaturedBooksPaginationFailureState extends FeaturedBooksState {
+  final String message;
+  const FeaturedBooksPaginationFailureState({required this.message});
+}
+
 final class FeaturedBooksFailureState extends FeaturedBooksState {
   final String message;
   const FeaturedBooksFailureState({required this.message});

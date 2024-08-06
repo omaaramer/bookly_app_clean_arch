@@ -4,15 +4,21 @@ import 'package:hive/hive.dart';
 import '../../domain/entites/book_entity.dart';
 
 abstract class HomeLocalDataSource {
-  List<BookEntity> featchFeaturedBooks();
+  List<BookEntity> featchFeaturedBooks({int pageNum = 0});
   List<BookEntity> featchNewsetBooks();
 }
 
 class HomeLocalDataSourceImpl implements HomeLocalDataSource {
   @override
-  List<BookEntity> featchFeaturedBooks() {
+  List<BookEntity> featchFeaturedBooks({int pageNum = 0}) {
+    int startIndex = pageNum * 10;
+    int endIndex = (pageNum + 1) * 10;
     var box = Hive.box<BookEntity>(kFeaturedBook);
-    return box.values.toList();
+    int length = box.values.length;
+    if (startIndex >= length || endIndex > length) {
+      return [];
+    }
+    return box.values.toList().sublist(startIndex, endIndex);
   }
 
   @override
